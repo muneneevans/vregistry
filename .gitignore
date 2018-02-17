@@ -1,0 +1,7 @@
+/node_modules
+/dist
+/public
+.idea/
+*.log
+package-lock.json
+npm-debug.log
