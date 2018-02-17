@@ -4,12 +4,12 @@ import { Provider } from "react-redux"
 
 import styles from "./app.css"
 
-import App from "./Containers/App/App"
+import App from "./Containers/App"
 import store from "./Store/configureStore"
 
 render(
 	<Provider store={store}>
-		<App  />
+		<App />
 	</Provider>,
 	document.getElementById("app")
 )

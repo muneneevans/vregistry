@@ -1,0 +1,40 @@
+.header {
+  font-family: SharpSans;
+  background-color: #efeb40;
+  margin: 0;
+}
+img {
+  max-width: 100%;
+}
+
+.loginScreena {
+  width: 100vw;
+  height: 100vh;
+}
+
+.loginForma{  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: red;
+  max-width: 50vh;
+  margin-top:auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: 30%; */
+  /* position: absolute;
+  top: 50%;
+  transform: translateY(50%)  */
+}
+.loginScreen {
+  display: table;
+  width: 100vw;
+  height: 100vh;
+}
+.loginForm {
+  display: table-cell;
+  max-width: 60vw;
+  text-align: center;
+  vertical-align: middle;
+}
