@@ -1,0 +1,23 @@
+.Header {
+}
+
+.birthScreen {
+  min-width: 95vw;
+  min-height: 95vh;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.sidenav {
+    height: 100%;    
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border: red;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.red{
+  background: red;
+}

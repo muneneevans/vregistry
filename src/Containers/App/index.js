@@ -6,12 +6,12 @@ import {
 	Redirect,
 	withRouter
 } from "react-router-dom"
-
+import Births from "../Births"
 
 const AuthExample = () => (
 	<Router>
 		<div>
-			<AuthStatus />
+			{/* <AuthStatus />
 			<ul>
 				<li>
 					<Link to="/public">Public Page</Link>
@@ -19,9 +19,10 @@ const AuthExample = () => (
 				<li>
 					<Link to="/protected">Protected Page</Link>
 				</li>
-			</ul>
+			</ul> */}
 			<Route path="/public" component={Public} />
 			<Route path="/public" component={Public} />
+			<Route path="/births" component={Births} />
 			<Route path="/login" component={Login} />
 			<PrivateRoute path="/protected" component={Protected} />
 		</div>

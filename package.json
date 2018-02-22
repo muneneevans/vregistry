@@ -8,15 +8,16 @@
     "test": "jest",
     "watch": "webpack --watch",
     "build": "webpack-dev-server --open --config webpack.dev.js",
-    "dashboard":
-      "webpack-dashboard -- webpack-dev-server --open --config webpack.dev.js",
+    "dashboard": "webpack-dashboard -- webpack-dev-server --open --config webpack.dev.js",
     "build:prod": "webpack --config webpack.prod.js "
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/muneneevans/vregistry.git"
   },
-  "keywords": ["boilerplate"],
+  "keywords": [
+    "boilerplate"
+  ],
   "author": "Evans Munene",
   "license": "MIT",
   "bugs": {
@@ -74,8 +75,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"
     }
   }
