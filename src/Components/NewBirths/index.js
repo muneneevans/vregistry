@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import moment from "moment"
 import DatePicker from "react-datepicker"
 import styles from "./style.css"
+import "react-datepicker/dist/react-datepicker.css"
 
 class newBirth extends Component {
 	constructor(props) {
@@ -40,7 +41,7 @@ class newBirth extends Component {
 	}
 
 	handleSubmit() {
-		this.props.newBirth({})
+		this.props.newBirth(this.state.newBirth)
 	}
 
 	message(newBirthProcess) {
@@ -69,21 +70,15 @@ class newBirth extends Component {
 		property[event.target.name] = event.target.value
 		this.setState({
 			...this.state,
-			newBirth: {
-				...this.state.newBirth,
-				newBirth: property
-			}
+			newBirth: property
 		})
 	}
-	handleDateChange(date) {
+	handleDateChange(date) {		
 		let property = this.state.newBirth
 		property.dateOfBirth = date
 		this.setState({
 			...this.state,
-			newBirth: {
-				...this.state.newBirth,
-				newBirth: property
-			}
+			newBirth: property
 		})
 	}
 
@@ -135,19 +130,19 @@ class newBirth extends Component {
 								className="ui fluid dropdown"
 								onChange={this.handleChange}
 							>
-								<option value="Male">Male</option>
-								<option value="Female">Female</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
 							</select>
 						</div>
 
 						<h4 className="ui dividing header">Birth Information</h4>
 						<div className="field">
-							<label>Date of birth</label>							
+							<label>Date of birth</label>
 
 							<DatePicker
 								name="dateOfBirth"
 								selected={this.state.newBirth.dateOfBirth}
-								onChange={this.handleChange}
+								onChange={this.handleDateChange}
 							/>
 						</div>
 						<div className="field">
@@ -211,7 +206,7 @@ class newBirth extends Component {
 							</div>
 						</div>
 					</form>
-					<button className="ui button" onClick={this.handleSubmit}>
+					<button className="ui button" onClick={this.handleSubmit.bind(this)}>
 						Save
 					</button>
 				</div>
