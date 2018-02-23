@@ -82,7 +82,11 @@ var config = {
 		new webpack.optimize.CommonsChunkPlugin({
 			name: "vendor",
 			minChunks: Infinity
-		})
+		}),
+		new webpack.ContextReplacementPlugin(
+			/moment[\/\\]locale/,
+			/(en-gb|en-us)\.js/
+		)
 	]
 }
 

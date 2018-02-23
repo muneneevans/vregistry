@@ -1,9 +1,10 @@
 import { combineReducers } from "redux"
 
 //import reducers from domains
+import birthsReducer from "./Births/reducers"
 
 const rootReducer = combineReducers({
-	//add the reducers here
+	births: birthsReducer
 })
 
 export default rootReducer
