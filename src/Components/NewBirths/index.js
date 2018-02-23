@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker"
 import styles from "./style.css"
 import "react-datepicker/dist/react-datepicker.css"
 
+import Message from "../../Components/Message"
+
 class newBirth extends Component {
 	constructor(props) {
 		super(props)
@@ -44,27 +46,6 @@ class newBirth extends Component {
 		this.props.newBirth(this.state.newBirth)
 	}
 
-	message(newBirthProcess) {
-		if (newBirthProcess.status === "error") {
-			return (
-				<div className="ui negative message">
-					<i className="close icon" />
-					<div className="header">There was a error in saving the birth</div>
-				</div>
-			)
-		} else if (newBirthProcess.status === "error") {
-			<div className="ui negative message">
-				<i className="close icon" />
-				<div className="header">Birth has been successfully saved</div>
-			</div>
-		} else if (newBirthProcess.status === "processing") {
-			<div className="ui info message">
-				<div className="ui active inline loader" />
-				<div class="header">Processing</div>
-			</div>
-		}
-	}
-
 	handleChange(event) {
 		let property = this.state.newBirth
 		property[event.target.name] = event.target.value
@@ -73,7 +54,7 @@ class newBirth extends Component {
 			newBirth: property
 		})
 	}
-	handleDateChange(date) {		
+	handleDateChange(date) {
 		let property = this.state.newBirth
 		property.dateOfBirth = date
 		this.setState({
@@ -87,8 +68,8 @@ class newBirth extends Component {
 			<div className={styles.newBirthScreen}>
 				<div className="ui equal width center aligned padded grid">
 					<h1>New Birth</h1>
-				</div>
-				{this.message(this.props.newBirthProcess)}
+				</div>				
+				<Message status={this.props.newBirthProcess.status} />
 				<div>
 					<form className="ui form">
 						<h4 className="ui dividing header">Child Information</h4>
