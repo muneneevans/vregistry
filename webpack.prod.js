@@ -10,7 +10,7 @@ module.exports = merge(common, {
 		rules: [
 			{
 				test: /\.css$/,
-				exclude: /node_modules/,
+				// exclude: /node_modules/,
 				loader: ExtractTextPlugin.extract({
 					fallback: "style-loader",
 					use: "css-loader?sourceMap,module"
@@ -29,11 +29,5 @@ module.exports = merge(common, {
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify("production")
 		})
-	],
-	resolve: {
-		alias: {
-			react: "preact-compat",
-			"react-dom": "preact-compat"
-		}
-	}
+	]
 })
