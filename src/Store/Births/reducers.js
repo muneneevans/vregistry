@@ -5,7 +5,8 @@ import { combineReducers } from "redux"
 const initialState = Immutable({
 	births: [],
 	newBirthProcess: { status: "idle" },
-	vaccines:[]
+	vaccines: [],
+	birthDetails: {}
 })
 
 export const birthsReducer = (state = initialState, action = {}) => {
@@ -31,6 +32,11 @@ export const birthsReducer = (state = initialState, action = {}) => {
 		return state.merge({
 			births: action.births
 		})
+
+	case types.BIRTH_DETAILS_SUCCESS:		
+		return state.merge({
+			birthDetails: action.birthDetails
+		})
 	default:
 		return state
 	}
@@ -52,4 +58,7 @@ const addNewBirthToList = (newBirth, birthsList) => {
 	return newList
 }
 
-export default combineReducers({ births: birthsReducer , vaccines: vaccinesReducer })
+export default combineReducers({
+	births: birthsReducer,
+	vaccines: vaccinesReducer
+})

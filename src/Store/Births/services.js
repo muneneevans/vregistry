@@ -68,6 +68,32 @@ export default class BirthsService {
 			})
 		}).then(response => response.json())
 	}
+
+	static getBirthDetails(birthId) {
+		return fetch(BirthsService.host, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+                query{
+                    birth(id:"${birthId}") {
+                        id
+                        childFirstName,
+                        childLastName,
+                        childMiddleName,
+                        sex,
+                        placeOfBirth,
+                        nameOfMother,
+                        dateOfBirth,
+                        natureOfBirth,
+                        motherIdNumber,
+                        motherIdNumber
+                    }
+                }
+                `
+			})
+		}).then(response => response.json())
+	}
 	static getVaccineList() {
 		return fetch(BirthsService.host, {
 			method: "POST",

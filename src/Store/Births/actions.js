@@ -23,6 +23,26 @@ export const newBirth = birthDetails => {
 	}
 }
 
+export const fetchBirthDetails = birthId => {
+	return dispatch => {
+		dispatch({ type: types.BIRTH_DETAILS_REQUEST })
+
+		BirthService.getBirthDetails(birthId).then(response => {
+			if ("errors" in response) {
+				return dispatch({
+					type: types.BIRTH_DETAILS_ERROR,
+					errors: response.errors
+				})
+			} else {				
+				return dispatch({
+					type: types.BIRTH_DETAILS_SUCCESS,
+					birthDetails: response.data.birth
+				})
+			}
+		})
+	}
+}
+
 export const fetchBirthList = () => {
 	return dispatch => {
 		dispatch({ type: types.BIRTH_LIST_REQUEST })

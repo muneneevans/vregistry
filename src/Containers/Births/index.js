@@ -12,8 +12,13 @@ import Banner from "../../Components/Banner"
 import BirthsSideBar from "../../Components/BirthsMenu"
 import BirthsList from "../../Components/BirthsList"
 import VaccinesList from "../../Components/VaccineList"
+import BirthDetails from "../../Components/BirthDetails"
 
 class Births extends Component {
+	constructor(props) {
+		super(props)
+		this.getBirthDetails = this.getBirthDetails.bind(this)
+	}
 	componentDidMount() {
 		this.props.birthActions.fetchBirthList()
 		this.props.birthActions.fetchAllVaccines()
@@ -21,6 +26,10 @@ class Births extends Component {
 
 	newBirth(birthDetails) {
 		this.props.birthActions.newBirth(birthDetails)
+	}
+
+	getBirthDetails(birthId) {
+		this.props.birthActions.fetchBirthDetails(birthId)
 	}
 
 	render() {
@@ -35,23 +44,42 @@ class Births extends Component {
 							</div>
 
 							<div className="column eight wide">
-								<Route
-									path={this.props.match.path + "/new"}
-									render={() => (
-										<NewBirth
-											newBirth={this.newBirth.bind(this)}
-											newBirthProcess={this.props.newBirthProcessStatus}
-										/>
-									)}
-								/>
-								<Route
-									path={this.props.match.path + "/list"}
-									render={() => <BirthsList birthsList={this.props.births} />}
-								/>
-								<Route
-									path={this.props.match.path + "/vaccines/list"}
-									render={() => <VaccinesList vaccinesList={this.props.vaccines}/>}
-								/>
+								<Switch>
+									<Route
+										path={this.props.match.path + "/new"}
+										render={() => (
+											<NewBirth
+												newBirth={this.newBirth.bind(this)}
+												newBirthProcess={this.props.newBirthProcessStatus}
+											/>
+										)}
+									/>
+									<Route
+										path={this.props.match.path + "/list"}
+										render={() => (
+											<BirthsList
+												birthsList={this.props.births}
+												getBirthDetailsAction={this.getBirthDetails}
+											/>
+										)}
+									/>
+									<Route
+										path={this.props.match.path + "/vaccines/list"}
+										render={() => (
+											<VaccinesList vaccinesList={this.props.vaccines} />
+										)}
+									/>
+									<Route
+										path={this.props.match.path + "/:id"}
+										render={props => (
+											<BirthDetails
+												birthDetails={this.props.birthDetails}
+												getBirthDetails={this.getBirthDetails}
+												match={props.match}
+											/>
+										)}
+									/>
+								</Switch>
 							</div>
 						</div>
 					</div>
@@ -66,7 +94,9 @@ const mapStateToProps = state => {
 		births: birthSelectors.getBirths(state.births),
 		newBirthProcessStatus: birthSelectors.getNewBirthProcess(state.births),
 
-		vaccines: birthSelectors.getAllVaccines(state.births)
+		vaccines: birthSelectors.getAllVaccines(state.births),
+
+		birthDetails: birthSelectors.getBirthDetails(state.births)
 	}
 }
 
