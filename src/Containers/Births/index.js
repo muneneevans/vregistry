@@ -79,6 +79,15 @@ class Births extends Component {
 											/>
 										)}
 									/>
+									<Route
+										path={this.props.match.path }
+										render={() => (
+											<NewBirth
+												newBirth={this.newBirth.bind(this)}
+												newBirthProcess={this.props.newBirthProcessStatus}
+											/>
+										)}
+									/>
 								</Switch>
 							</div>
 						</div>

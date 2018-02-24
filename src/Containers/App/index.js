@@ -4,7 +4,8 @@ import {
 	Route,
 	Link,
 	Redirect,
-	withRouter
+	withRouter,
+	Switch
 } from "react-router-dom"
 import Births from "../Births"
 
@@ -20,11 +21,14 @@ const AuthExample = () => (
 					<Link to="/protected">Protected Page</Link>
 				</li>
 			</ul> */}
-			<Route path="/public" component={Public} />
-			<Route path="/public" component={Public} />
-			<Route path="/births" component={Births} />
-			<Route path="/login" component={Login} />
-			<PrivateRoute path="/protected" component={Protected} />
+			<Switch>
+				<Route path="/public" component={Public} />
+				<Route path="/public" component={Public} />
+				<Route path="/births" component={Births} />
+				<Route path="/login" component={Login} />
+				<PrivateRoute path="/protected" component={Protected} />
+				<Route path="/" component={Births} />
+			</Switch>
 		</div>
 	</Router>
 )
