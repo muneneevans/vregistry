@@ -23,6 +23,9 @@ const BirthsList = ({ birthsList }) => (
 							<td className="">None</td>
 						</tr>
 					))}					
+					<tr className="center aligned active">
+						<td colSpan="4">{birthsList.length} children</td>
+					</tr>
 				</tbody>
 			) : (
 				<tbody>
