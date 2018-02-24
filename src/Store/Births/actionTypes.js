@@ -6,3 +6,7 @@ export const BIRTH_LIST_REQUEST = "births.BIRTH_LIST_REQUEST"
 export const BIRTH_LIST_SUCCESS = "births.BIRTH_LIST_SUCCESS"
 export const BIRTH_LIST_ERROR = "births.BIRTH_LIST_ERROR"
 
+export const VACCINE_LIST_REQUEST = "births.VACCINE_LIST_REQUEST"
+export const VACCINE_LIST_SUCCESS = "births.VACCINE_LIST_SUCCESS"
+export const VACCINE_LIST_ERROR = "births.VACCINE_LIST_ERROR"
+

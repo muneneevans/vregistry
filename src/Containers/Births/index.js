@@ -11,10 +11,12 @@ import NewBirth from "../../Components/NewBirths"
 import Banner from "../../Components/Banner"
 import BirthsSideBar from "../../Components/BirthsMenu"
 import BirthsList from "../../Components/BirthsList"
+import VaccinesList from "../../Components/VaccineList"
 
 class Births extends Component {
 	componentDidMount() {
 		this.props.birthActions.fetchBirthList()
+		this.props.birthActions.fetchAllVaccines()
 	}
 
 	newBirth(birthDetails) {
@@ -46,6 +48,10 @@ class Births extends Component {
 									path={this.props.match.path + "/list"}
 									render={() => <BirthsList birthsList={this.props.births} />}
 								/>
+								<Route
+									path={this.props.match.path + "/vaccines/list"}
+									render={() => <VaccinesList vaccinesList={this.props.vaccines}/>}
+								/>
 							</div>
 						</div>
 					</div>
@@ -58,7 +64,9 @@ class Births extends Component {
 const mapStateToProps = state => {
 	return {
 		births: birthSelectors.getBirths(state.births),
-		newBirthProcessStatus: birthSelectors.getNewBirthProcess(state.births)
+		newBirthProcessStatus: birthSelectors.getNewBirthProcess(state.births),
+
+		vaccines: birthSelectors.getAllVaccines(state.births)
 	}
 }
 

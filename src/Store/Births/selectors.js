@@ -3,3 +3,5 @@ export const getBirths = birthsReducer => {
 }
 export const getNewBirthProcess = birthsReducer =>
 	birthsReducer.births.newBirthProcess
+
+export const getAllVaccines = birthsReducer => birthsReducer.vaccines.vaccines

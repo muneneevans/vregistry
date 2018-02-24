@@ -24,7 +24,7 @@ export const newBirth = birthDetails => {
 }
 
 export const fetchBirthList = () => {
-	return dispatch => {		
+	return dispatch => {
 		dispatch({ type: types.BIRTH_LIST_REQUEST })
 		BirthService.getBirthsList({}).then(response => {
 			if ("error" in response) {
@@ -36,6 +36,25 @@ export const fetchBirthList = () => {
 				return dispatch({
 					type: types.BIRTH_LIST_SUCCESS,
 					births: response.data.organisationUnit.birthSet.edges
+				})
+			}
+		})
+	}
+}
+
+export const fetchAllVaccines = () => {
+	return dispatch => {
+		dispatch({ type: types.VACCINE_LIST_REQUEST })
+		BirthService.getVaccineList().then(response => {
+			if ("error" in response) {
+				return dispatch({
+					type: types.VACCINE_LIST_ERROR,
+					errors: response.errors
+				})
+			} else {
+				return dispatch({
+					type: types.VACCINE_LIST_SUCCESS,
+					vaccines: response.data.allVaccines.edges
 				})
 			}
 		})

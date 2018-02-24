@@ -4,7 +4,8 @@ import { combineReducers } from "redux"
 
 const initialState = Immutable({
 	births: [],
-	newBirthProcess: { status: "idle" }
+	newBirthProcess: { status: "idle" },
+	vaccines:[]
 })
 
 export const birthsReducer = (state = initialState, action = {}) => {
@@ -34,6 +35,16 @@ export const birthsReducer = (state = initialState, action = {}) => {
 		return state
 	}
 }
+export const vaccinesReducer = (state = initialState, action = {}) => {
+	switch (action.type) {
+	case types.VACCINE_LIST_SUCCESS:
+		return state.merge({
+			vaccines: action.vaccines
+		})
+	default:
+		return state
+	}
+}
 
 const addNewBirthToList = (newBirth, birthsList) => {
 	let newList = Immutable.asMutable(birthsList, { deep: true })
@@ -41,4 +52,4 @@ const addNewBirthToList = (newBirth, birthsList) => {
 	return newList
 }
 
-export default combineReducers({ births: birthsReducer })
+export default combineReducers({ births: birthsReducer , vaccines: vaccinesReducer })

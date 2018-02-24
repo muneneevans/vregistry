@@ -14,6 +14,9 @@ const BirthSidebar = () => (
 				<div className="ui label">510</div>
 			</div>
 		</a>
+		<a className="item" href="/births/vaccines/list">
+			<div className="ui segment">All Vaccinnes</div>
+		</a>
 		<div className="ui segment">
 			<a className="item">Record Vaccinnes</a>
 		</div>
