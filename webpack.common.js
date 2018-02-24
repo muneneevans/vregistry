@@ -60,7 +60,7 @@ var config = {
 			inject: true
 		}),
 		new WebpackPwaManifest({
-			name: "react js boilerplate",
+			name: "Vaccination Registry",
 			short_name: "rjb",
 			lang: "en-us",
 			start_url: "/",
