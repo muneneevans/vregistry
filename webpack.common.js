@@ -56,7 +56,7 @@ var config = {
 		new HtmlWebpackPlugin({
 			filename: DIST_DIR + "/index.html",
 			template: SRC_DIR + "/index.html",
-			title: "React Js Boilerplate",
+			title: "Vaccination Registry System",
 			inject: true
 		}),
 		new WebpackPwaManifest({
