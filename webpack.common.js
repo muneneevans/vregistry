@@ -52,7 +52,7 @@ var config = {
 		]
 	},
 	plugins: [
-		new CleanWebpackPlugin(["build"]),
+		new CleanWebpackPlugin(["public"]),
 		new HtmlWebpackPlugin({
 			filename: DIST_DIR + "/index.html",
 			template: SRC_DIR + "/index.html",
