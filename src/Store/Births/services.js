@@ -6,7 +6,6 @@ export default class BirthsService {
 	}
 
 	static newBirth(birthDetails) {
-		console.log(obj2arg(birthDetails))
 		return fetch(BirthsService.host, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -16,7 +15,9 @@ export default class BirthsService {
                     createBirth(
                         input:{
                             birth:{
-                                ${obj2arg(birthDetails, { noOuterBraces: true })}
+                                ${obj2arg(birthDetails, {
+	noOuterBraces: true
+})}
                             }
                         }
                     )
@@ -36,6 +37,32 @@ export default class BirthsService {
 
                     }
 
+                }
+                `
+			})
+		}).then(response => response.json())
+	}
+	static getBirthsList(orgUnit) {
+		return fetch(BirthsService.host, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+                query{
+                    organisationUnit(id:"T3JnYW5pc2F0aW9uVW5pdE5vZGU6MTIwNDE4"){
+                        id
+                        name
+                        birthSet {
+                        edges {
+                            node {
+                            id
+                            childFirstName,
+                            childLastName,
+                            childMiddleName,
+                            }
+                        }
+                        }
+                    }
                 }
                 `
 			})

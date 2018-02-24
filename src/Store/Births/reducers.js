@@ -25,6 +25,11 @@ export const birthsReducer = (state = initialState, action = {}) => {
 				data: action.errors
 			}
 		})
+
+	case types.BIRTH_LIST_SUCCESS:
+		return state.merge({
+			births: action.births
+		})
 	default:
 		return state
 	}

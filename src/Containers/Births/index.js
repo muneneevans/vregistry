@@ -13,7 +13,9 @@ import BirthsSideBar from "../../Components/BirthsMenu"
 import BirthsList from "../../Components/BirthsList"
 
 class Births extends Component {
-	componentDidMount() {}
+	componentDidMount() {
+		this.props.birthActions.fetchBirthList()
+	}
 
 	newBirth(birthDetails) {
 		this.props.birthActions.newBirth(birthDetails)
@@ -42,12 +44,7 @@ class Births extends Component {
 								/>
 								<Route
 									path={this.props.match.path + "/list"}
-									render={() => (
-										<BirthsList
-											newBirth={this.newBirth.bind(this)}
-											newBirthProcess={this.props.newBirthProcessStatus}
-										/>
-									)}
+									render={() => <BirthsList birthsList={this.props.births} />}
 								/>
 							</div>
 						</div>
