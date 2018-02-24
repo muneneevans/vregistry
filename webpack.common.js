@@ -18,11 +18,12 @@ var config = {
 			"redux",
 			"react-redux",
 			"react-router",
-			"redux-thunk"
+			"redux-thunk",
+			"moment"
 		],
 		app: SRC_DIR + "/index.js"
 	},
-	output: {
+	output: {	
 		path: DIST_DIR + "/build",
 		filename: "[name].js",
 		chunkFilename: "[name].js",
